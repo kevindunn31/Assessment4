@@ -42,16 +42,30 @@ app.get("/api/disrespect", (req, res) => {
   res.status(200).send(randomDisrespect);
 });
 
-app.post('/api/users', (req, res) => {
-  console.log(req.body)
-  let username = req.body.username
-  let firstName = req.body.firstName
-  let lastName = req.body.lastName
-  res.status(200).send(`Hello ${firstName} ${lastName}.`)
-});
+const form = document.querySelector("form")
+const newNameIn = document.querySelector("newNameIn")
+const newNameInx = document.getElementById("newNameInx")
+const submitBtn = newNamInx;
+
+function startName() {
+  const newName = newNameIn.ariaValueMax;
+  const nameFull = {
+    newName
+  }
+};
+
+
+axios.post('/api/api/users/:username', (req, res) 
+  .then (res) => {
+    let name res.data[res.data.length];
+    alert("New name added");
+
+    newNameIn.value = "";
+
+  };
 
 let users = []
-app.put('/api/users/:username', (req, res) => {
+axios.put('/api/api/users/:username', (req, res) => {
   let existingUsername = req.params.username
   let newUsername = req.body.username
   for (let i = 0; i < users.length; i++) {
@@ -65,7 +79,7 @@ app.put('/api/users/:username', (req, res) => {
 });
 
 let users = []
-app.delete('/api/users/:username', (req, res) => {
+axios.delete('/api/users/:username', (req, res) => {
   let existingUsername = req.params.username
   for (let i = 0; i < users.length; i++) {
     if (users[i].username === existingUsername) {
@@ -76,6 +90,10 @@ app.delete('/api/users/:username', (req, res) => {
   }
   res.status(400).send("We cannot find them")
 });
+
+nameBtn.addEventListner("click", createName);
+indexBtn.addEventListner("click", deleteName);
+submitForm.addEventListner("click", editName);
 
 
 
